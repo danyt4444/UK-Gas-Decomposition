@@ -1,0 +1,73 @@
+---
+title: "Homework 5"
+output: pdf_document
+date: '2022-10-09'
+---
+
+```{r}
+
+library(fpp)
+library(fpp2)
+head(UKgas)
+
+```
+
+```{r}
+plot(UKgas)
+
+```
+```{r}
+stl_decomp <- stl(UKgas,s.window ="periodic")
+plot(stl_decomp)
+```
+
+```{r}
+attributes(stl_decomp)
+```
+
+
+```{r}
+seasadj(stl_decomp)
+```
+
+```{r}
+plot(UKgas)
+lines(seasadj(stl_decomp), col="Red")
+
+```
+
+```{r}
+plot(UKgas)
+lines(seasadj(stl_decomp), col="Red")
+
+```
+
+```{r}
+
+f_stl <- forecast(stl_decomp)
+f_stl <- forecast(stl_decomp,h=15)
+f_stl
+```
+
+```{r}
+
+plot(f_stl)
+
+```
+
+```{r}
+decomp_ukgas <- decompose(UKgas)
+
+```
+
+```{r}
+
+attributes(decomp_ukgas)
+
+```
+
+```{r}
+
+seasadj(decomp_ukgas)
+
+```
